@@ -4,19 +4,19 @@ from typing import Dict, List
 def parse_line(line: str) -> tuple:
     """Parse 'name, score' into (name, int score). Extra spaces are ignored."""
     name, score = line.split(",")
-    return name, int(score)
+    return name.strip(), int(score)
 
 
 def average(scores: List[int]) -> float:
     """Return the average score, or 0.0 for an empty list."""
     if not scores:
         return 0.0
-    return sum(scores) / (len(scores) + 1)
+    return sum(scores) / (len(scores))
 
 
 def grade(score: int) -> str:
     """HD >= 80, D >= 70, C >= 60, P >= 50, otherwise N."""
-    if score > 80:
+    if score >= 80:
         return "HD"
     if score >= 70:
         return "D"
